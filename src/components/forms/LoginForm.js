@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Form, Message } from "semantic-ui-react";
+import _ from "lodash";
 import Validator from "validator";
 import InlineError from "../messages/InlineError";
 
@@ -16,7 +17,7 @@ class LoginForm extends Component {
   handleChange = e => {
     this.setState({
       data: { ...this.state.data, [e.target.name]: e.target.value },
-      errors: { ...this.state.errors, [e.target.name]: null }
+      errors: _.omit(this.state.errors, e.target.name)
     });
   };
 
@@ -32,7 +33,7 @@ class LoginForm extends Component {
     e.preventDefault();
     const errors = this.validate(this.state.data);
     this.setState({ errors });
-    if (Object.keys(this.state.errors).length === 0) {
+    if (_.isEmpty(errors)) {
       this.setState({ loading: true });
       this.props
         .submit(this.state.data)
