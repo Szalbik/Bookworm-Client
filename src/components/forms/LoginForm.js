@@ -25,7 +25,7 @@ class LoginForm extends Component {
     const errors = {};
     if (!Validator.isEmail(values.email)) errors.email = "Invalid email!";
     if (!values.password || values.password.length < 6)
-      errors.password = "Password can't be blank!";
+      errors.password = "Password should have at least 6 characters!";
     return errors;
   };
 
