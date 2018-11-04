@@ -10,11 +10,19 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "semantic-ui-css/semantic.min.css";
 import rootReducer from "./reducers";
+import { userLoggedIn } from "./actions/auth";
 
 const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunk))
 );
+
+if (localStorage.getItem("userJWT")) {
+  const user = {
+    email: localStorage.getItem("userEmail")
+  };
+  store.dispatch(userLoggedIn(user));
+}
 
 ReactDOM.render(
   <BrowserRouter>

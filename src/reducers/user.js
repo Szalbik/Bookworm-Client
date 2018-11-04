@@ -1,10 +1,13 @@
-import types from '../types';
+import types from "../types";
 
-export default function (state = {}, action =  {}) {
-    switch (action.type) {
-        case types.USER_LOGGED_IN:
-            return action.user
-        default:
-            return state;
-    }
+
+export default function(state = {}, action = {}) {
+  switch (action.type) {
+    case types.USER_LOGGED_IN:
+      return { ...action.user };
+    case types.USER_LOGGED_OUT:
+      return {};
+    default:
+      return state;
+  }
 }
