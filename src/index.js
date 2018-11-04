@@ -19,7 +19,7 @@ const store = createStore(
 
 if (localStorage.getItem("userJWT")) {
   const user = {
-    email: localStorage.getItem("userEmail")
+    token: localStorage.getItem("userJWT")
   };
   store.dispatch(userLoggedIn(user));
 }
