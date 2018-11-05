@@ -24,3 +24,9 @@ export const confirm = token => dispatch =>
     localStorage.setItem("userJWT", user.token);
     dispatch(userLoggedIn(user));
   });
+
+export const resendToken = email => dispatch =>
+  api.user.resendToken(email).then(user => {
+    localStorage.setItem("userJWT", user.token);
+    dispatch(userLoggedIn(user));
+  });
