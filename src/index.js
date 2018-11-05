@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
+import decode from "jwt-decode";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import App from "./App";
@@ -18,8 +19,11 @@ const store = createStore(
 );
 
 if (localStorage.getItem("userJWT")) {
+  const payload = decode(localStorage.getItem("userJWT"));
   const user = {
-    token: localStorage.getItem("userJWT")
+    token: localStorage.getItem("userJWT"),
+    email: payload.email,
+    confirmed: payload.confirmed
   };
   store.dispatch(userLoggedIn(user));
 }

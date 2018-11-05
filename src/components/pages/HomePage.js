@@ -13,7 +13,7 @@ class Homepage extends Component {
   render() {
     const { isAuthenticated, logout } = this.props;
     return (
-      <div className="ui container">
+      <div>
         <h1>HomePage</h1>
         {isAuthenticated ? (
           <button onClick={() => logout()}>Logout</button>

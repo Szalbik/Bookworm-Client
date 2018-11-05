@@ -13,9 +13,14 @@ export const login = credentials => dispatch =>
   });
 
 export const logout = () => {
-  console.log("remove localstorage");
   localStorage.removeItem("userJWT");
   return {
     type: types.USER_LOGGED_OUT
   };
 };
+
+export const confirm = token => dispatch =>
+  api.user.confirm(token).then(user => {
+    localStorage.setItem("userJWT", user.token);
+    dispatch(userLoggedIn(user));
+  });
