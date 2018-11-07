@@ -1,6 +1,5 @@
 import types from "../types";
 
-
 export default function(state = {}, action = {}) {
   switch (action.type) {
     case types.USER_LOGGED_IN:

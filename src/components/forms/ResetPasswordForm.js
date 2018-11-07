@@ -32,7 +32,7 @@ class ResetPasswordForm extends Component {
     )
       errors.password_confirmation =
         "Password should have at least 6 characters!";
-    if (values.password != values.password_confirmation)
+    if (values.password !== values.password_confirmation)
       errors.password_confirmation = "Passwodrs do not match!";
     return errors;
   };
