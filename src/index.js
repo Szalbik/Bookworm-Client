@@ -12,6 +12,7 @@ import * as serviceWorker from "./serviceWorker";
 import "semantic-ui-css/semantic.min.css";
 import rootReducer from "./reducers";
 import { userLoggedIn } from "./actions/auth";
+import setAuthorizationHeader from "./utils/setAuthorizationHeader";
 
 const store = createStore(
   rootReducer,
@@ -25,6 +26,7 @@ if (localStorage.getItem("userJWT")) {
     email: payload.email,
     confirmed: payload.confirmed
   };
+  setAuthorizationHeader(localStorage.getItem("userJWT"));
   store.dispatch(userLoggedIn(user));
 }
 

@@ -1,5 +1,6 @@
 import types from "../types";
 import api from "../api";
+import setAuthorizationHeader from "../utils/setAuthorizationHeader";
 
 export const userLoggedIn = user => ({
   type: types.USER_LOGGED_IN,
@@ -9,11 +10,13 @@ export const userLoggedIn = user => ({
 export const login = credentials => dispatch =>
   api.user.login(credentials).then(user => {
     localStorage.setItem("userJWT", user.token);
+    setAuthorizationHeader(user.token);
     dispatch(userLoggedIn(user));
   });
 
 export const logout = () => {
   localStorage.removeItem("userJWT");
+  setAuthorizationHeader();
   return {
     type: types.USER_LOGGED_OUT
   };
