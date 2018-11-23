@@ -11,6 +11,7 @@ import ConfirmationPage from "./components/pages/ConfirmationPage";
 import DashboardPage from "./components/pages/DashboardPage";
 import ForgotPasswordPage from "./components/pages/ForgotPasswordPage";
 import ResetPasswordPage from "./components/pages/ResetPasswordPage";
+import NewBookPage from "./components/pages/NewBookPage";
 import UserRoute from "./components/routes/UserRoute";
 import GuestRoute from "./components/routes/GuestRoute";
 import TopNavigation from "./components/navigation/TopNavigation";
@@ -30,6 +31,7 @@ class App extends Component {
           component={ResetPasswordPage}
         />
         <UserRoute path="/dashboard" component={DashboardPage} />
+        <UserRoute path="/books/new" component={NewBookPage} />
       </div>
     );
   }
