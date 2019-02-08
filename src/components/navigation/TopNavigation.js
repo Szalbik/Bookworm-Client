@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Menu, Dropdown, Image } from "semantic-ui-react";
+import { Menu, Dropdown, Image, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import gravatarUrl from "gravatar-url";
 import { connect } from "react-redux";
@@ -11,6 +11,9 @@ const TopNavigation = ({ user, logout }) => {
     <Menu>
       <Menu.Item as={Link} to="/dashboard">
         Dashboard
+      </Menu.Item>
+      <Menu.Item as={Link} to="/books/new">
+        <Icon name="plus circle" size="large" /> Add Book
       </Menu.Item>
       <Menu.Menu position="right">
         <Dropdown trigger={<Image avatar src={gravatarUrl(user.email)} />}>
